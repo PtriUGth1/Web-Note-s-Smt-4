@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awal Tampilan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mogra&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script>
+
+    <style>
+        
+        *,
+        ::after,
+        ::before{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            border-color: #12c2e9;
+        }
+        a {
+            text-decoration: none;
+            outline: none;
+        }
+        li{
+            list-style: none;
+        }
+        h1,h2{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+        }
+
+        h3{
+            color: black;
+            font-family: serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+        .home-container{
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        .gambar-row{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        header{
+            position: absolute;
+            padding: 0px 10px;
+            left: 0px;
+            right: 0px;
+            z-index: 11;
+            transition: .8s;
+        }
+
+        header .gambar-row.header-wrap{
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .home-name{
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: black;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        .bars i{
+            font-size: 20px;
+            color: black;
+            height: 30px;
+            width: 35px;
+            line-height: 30px;
+            text-align: center;
+            cursor: pointer;
+            border: 1px solid white;
+            display: none;
+        }
+
+        .port-navbar ul li{
+            display: inline;
+            margin-left: 35px;
+        }
+        .port-navbar ul li a{
+            font-size: 1rem;
+            line-height: 72px;
+            color: black;
+            font-weight: 300;
+            position: relative;
+        }
+
+        .slider{
+            position: relative;
+            padding: 150px 0 50px 0;
+            background: white;
+        }
+
+        .slider-content{
+            align-items: center;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .slider-general {
+            flex: 0 0 auto;
+            width: 60%;
+        }
+
+        .welcome-msg{
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            color: black;
+            font-weight: 500;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .welcome-text h1{
+            display: inline;
+        }
+
+        .text-wrap{
+            position: relative;
+            display: inline-flex;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .welcome-title{
+            position: relative;
+            color: transparent;
+            -webkit-text--stroke: 1.1px black;
+        }
+
+        .welcome-title::before{
+            content: attr(data-fill-text);
+            position: absolute;
+            width: 0;
+            height: 100%;
+            font-weight: 600;
+            transition: width 0.8s cubic-bezier(0.165,0.84.0.44,1);
+            overflow: hidden;
+            color: black;
+            white-space: nowrap;
+            -webkit-text-stroke: 0 transparent;
+        }
+
+        .welcome-title:hover::before{
+            width: 100%;
+        }
+
+        .slider-general p{
+            line-height: 30px;
+            padding-right: 16%;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: #000;
+        }
+
+        .login-open a{
+            display: inline-block;
+            margin-top: 15px;
+            padding: 15px 30px;
+            color: aliceblue;
+            font-family: sans-serif;
+            background: rgba(12, 91, 155, 0.603);
+            position: relative;
+            z-index: 1001;
+            overflow: hidden;
+            text-transform: uppercase;
+            line-height: 30px;
+            border-radius: 50px 0 50px 50px;
+            transition: all 240ms linear 0ms;
+        }
+
+        .login-open a:hover{
+            background: rgb(12, 54, 172);
+        }
+
+        .login-open a::before{
+            content: " ";
+            background: #26aad3b7;
+            transition: all .0s;
+            position: absolute;
+            height: 120%;
+            width: 25px;
+            opacity: .2;
+            left: -35%;
+            top: -10%;
+            transform: rotate(0);
+        }
+
+        .login-open a:hover::before{
+            left: 130%;
+        }
+
+        .slider-image{
+            flex: 0 0 auto;
+            width: 40%;
+        }
+
+        .welcome-image img{
+            max-height: 500px;
+            width: 100%;
+            object-fit: cover;
+            vertical-align: middle;
+            border-radius: 0 30% 0 30%;
+            cursor: pointer;
+        }
+
+        .welcome-image{
+            position: relative;
+            z-index: 2;
+            transition-duration: 0.4s;
+        }
+
+
+        #contact{
+            border-color: black;
+            text-align: center;
+            padding: 50px 0;
+            width: 100%;
+            display: flex;
+        }
+
+        .main title{
+            -webkit-text-stroke: 1px rgb(255, 255, 255);
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hover-title{
+            color: #1331d8;
+            position: absolute;
+            transform: translate3d(0.100%);
+        }
+
+        .main-title, .hover-title{
+            transition: .5s cubic-bezier(0.51,0.57,0.17, 1);
+        }
+
+        .text-wrap:hover .main-title{
+            transform: translate3d(0, -100%, 0);
+            transition-delay: 0.1s;
+        }
+
+        .text-wrap:hover .hover-title{
+            transform: translate3d(0, 0, 0);
+        }
+
+        .contact-info{
+            margin: 40px 0;
+
+        }
+        .contact-content{
+            padding: 100px;
+        }
+
+        .contact-info span, .contact-info a{
+            color: rgb(11, 88, 155);
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .contact-info h3{
+            color: rgb(31, 70, 197);
+            cursor: pointer;
+            transition: all 0.3s ease-out 0s;
+        }
+
+        .social-link li{
+            display: inline-block;
+            margin: 5px 10px;
+        }
+
+        .social-link li a{
+            color: rgb(0, 0, 0);
+            font-family: serif;
+            transition: all 0.3s ease-out 0s;
+        }
+
+        /*responsive*/
+        @media screen and (max-width:700px){
+            h1, h2 {
+                font-size: 3rem;
+            }
+            header{
+                padding: 15px;
+                position: fixed;
+                background-color: rgb(236, 241, 250);
+                border-bottom: 1px solid #EEE;
+            }
+
+            .bars{
+                display: inline-block;
+                border-color: rgb(236, 241, 250);
+                width: 100%;
+                left: 0;
+                top: 60px;
+                padding: 15px;
+                border-top: 1px solid #EEE;
+                display: none;
+                border-bottom: 1px solid #EEE;
+            }
+
+            .port-navbar.show{
+                display: block;
+            } 
+
+            .port-navbar ul li{
+                display: block;
+                margin-left: 0;
+                text-align: center
+            }
+
+            .slider-content{
+                margin: 0 -15px;
+                padding: 0 30px;
+            }
+
+            .slider-image{
+                width: 100%;
+                order: 1;
+            }
+
+            .slider-general{
+                order: 2;
+                margin-top: 3rem;
+                width: 100%;
+            }
+
+        }
+
+
+    </style>
+</head>
+<body>  
+    <header>
+        <div class="home-container">
+            <div class="gambar-row header-wrap">
+                <div class="home-name">
+                    <i class="#">Putri Note's</i>
+                </div>
+                <div class="bars">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+                <div class="port-navbar">
+                    <ul>
+                        <li><a herf="home-container">Home</a></li>
+                        <li><a herf="About">About</a></li>
+                        <li><a herf="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section id="main">
+        <div class="slider">
+            <div class="home-container">
+                <div class="slider-content">
+                    <div class="slider-general">
+                        <span class="welcome-msg">
+                            Welcome! Hello Word
+                        </span>
+                        <div class="welcome-text">
+                            <h1>Hai I'm Aliph</h1>
+                            <div class="text-wrap">
+                                <h2 class="welcome-title" data-fill-text="Putri">
+                                    Aliph
+                                </h2>
+                            </div>
+                            <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Velit quas maiores laborum est illum quis? Ab, autem! Sit, commodi delectus quis debitis nobis atque amet reiciendis animi, rerum odio nemo.</p>
+                        <div class="login-open" target="_blank">
+                            <a href="login.html">Login</a>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="slider-image">
+                        <div class="welcome-image">
+                            <img src="avatar.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="contact">
+        <div class="home-container">
+            <div class="contact-content">
+                <div class="text-wrap">
+                    <h2 class="main-title">Stay Conneted</h2>
+                    <h2 class="hover-title">Stay Conneted</h2>
+                </div>
+                <div class="contact-info">
+                    <span>Kings Note, Indonesia</span>
+                    <h3 herf="https://mail.google.com/mail/aliphutami22">aliphutami22@gmail.com</h3>
+                </div>
+                <div class="social-link" id="#contact">
+                    <ul>
+                        <li><a href="https://wa.me/+628990063053">Whatsapp</a></li>
+                        <li><a href="https://www.instagram.com/alpuutt22/">Instagram</a></li>
+                        <li><a href="https://www.youtube.com/@putriutami8297">Youtube</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const bars = document.querySelector(".bars");
+        bars.addEventListener("click",function(){
+            document.querySelector(".port-navbar").classList.toggle("show");
+        })
+    </script>
+</body>
+</html>

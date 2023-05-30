@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Note</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mogra&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;            
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url(BC1.jfif);
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        /* Header */
+        header {
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            font-family: 'Mogra', cursive;
+        }
+
+        /* Main */
+
+        nav {
+          padding: 7px;
+      }
+
+        a {
+            text-decoration: none;
+        }
+        nav ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          justify-content: space-between;
+        }
+
+        nav ul li {
+          position: relative;
+          justify-content: space-between;
+        }
+
+        nav ul li a {
+          display: block;
+          padding: 10px 14px;
+          text-decoration: none;
+        }
+        nav ul li ul {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          display: none;
+          background-color: #ffffff;
+          min-width: 160px;
+          padding: 4px;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+          transition: opacity 5s;
+          opacity: 0;
+          border-radius: 2px 5px 8px;
+        }
+      
+        nav ul li:hover > ul {
+            display: block;
+            opacity: 1;
+        }
+          
+        nav ul li ul li {
+            position: relative;
+        }
+          
+        nav ul li ul li a {
+            padding: 8px 10px;
+        }
+
+        button {
+            border-radius: 5px;
+        }
+
+        /* Tab Navigasi Aktif */
+        .active-tab {
+          border-radius: 8px 14px 0;
+          cursor: pointer;
+          display: flex;
+          float: left;
+          font-weight: bold;
+          color: blue;
+        }
+
+        /* Kotak Pencarian */
+        .right{
+          display: grid;
+          height: 100%;
+          place-items: center;
+        }
+        ::selection{
+          color: #fff;
+          background: #2980b9;
+        }
+                .search-box{
+                  position: relative;
+                  height: 60px;
+                  width: 60px;
+                  border-radius: 50%;
+                  box-shadow: 5px 5px 30px rgba(0,0,0,.2);
+                  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                }
+                .search-box.active{
+                  width: 350px;
+                }
+                .search-box input{
+                  width: 100%;
+                  height: 100%;
+                  border: none;
+                  border-radius: 50px;
+                  background: #fff;
+                  outline: none;
+                  padding: 0 60px 0 20px;
+                  font-size: 18px;
+                  opacity: 0;
+                  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                }
+                .search-box input.active{
+                  opacity: 1;
+                }
+                .search-box input::placeholder{
+                  color: #a6a6a6;
+                }
+                .search-box .search-icon{
+                  position: absolute;
+                  right: 0px;
+                  top: 50%;
+                  transform: translateY(-50%);
+                  height: 60px;
+                  width: 60px;
+                  background: #fff;
+                  border-radius: 50%;
+                  text-align: center;
+                  line-height: 60px;
+                  font-size: 22px;
+                  color: #2980b9;
+                  cursor: pointer;
+                  z-index: 1;
+                  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                }
+                .search-box .search-icon.active{
+                  right: 5px;
+                  height: 50px;
+                  line-height: 50px;
+                  width: 50px;
+                  font-size: 20px;
+                  background: #2980b9;
+                  color: #fff;
+                  transform: translateY(-50%) rotate(360deg);
+                }
+                .search-box .cancel-icon{
+                  position: relative;
+                  right: 20px;
+                  top: 50%;
+                  transform: translateY(-50%);
+                  font-size: 25px;
+                  color: #fff;
+                  cursor: pointer;
+                  transition: all 0.5s 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                }
+                .cancel-icon{
+                  display: none;
+                  overflow: hidden;
+                }
+                .cancel-icon.active{
+                  display: flex;
+                  width: 100%;
+                  font-size: 25px;
+                  margin-top: 25px;
+                  position: absolute;
+                  cursor: pointer;
+                  padding: 5px;
+                  margin-left: 175%;
+                  margin-top: 20px;
+                }
+                .search-icon.active{
+                  display: none;
+                  overflow: hidden;
+                }
+                .search-box .cancel-icon.active{
+                  right: -40px;
+                  transform: translateY(-50%) rotate(360deg);}
+                .search-box .search-data{
+                  text-align: center;
+                  padding-top: 7px;
+                  color: #fff;
+                  font-size: 18px;
+                  word-wrap: break-word;}
+                .search-box .search-data.active{
+                  display: none;
+                }        
+
+        /* Konten */
+        .container {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          -webkit-background-size: cover;
+        }
+        
+        aside {
+          flex: 0 0 auto;
+          width: 15%;
+        }
+        
+        section {
+          flex: 1 1 auto;
+          margin-right: 5px;
+          padding: 10px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+         /* Form Buku */
+        .book-form {
+          margin-bottom: 20px;
+        }
+
+      .book-form label {
+          display: flex;
+          margin-bottom: 5px;
+          font-weight: bold;
+      }
+
+      .book-form input[type="text"],
+      .book-form textarea {
+          width: 100%;
+          padding: 5px;
+          margin-bottom: 10px;
+      }
+
+      .book-form input[type="submit"] {
+          padding: 5px 5px;
+          background-color: #1d6ee7;
+          color: #ffffff;
+          border: none;
+          cursor: pointer;
+          transition: 1s;
+          overflow-y: hidden;
+      }
+
+      .book-form input::before{
+        content: "";
+        position: absolute;
+        bottom: 0;
+        transition: 1s;
+        width: 100%;
+        border-color: #00CED1;
+        z-index: -1;
+      }
+
+      .book-form:hover::before{
+        height: 200%;
+        border-radius: 75% 75% 0 0;
+      }
+      
+      input {
+        margin-top: 10px;
+      }
+      
+      button {
+        margin-top: 10px;
+      }
+
+      input[type="checkbox"] {
+        margin-top: 10px;
+      }
+      
+      input[type="date"],
+      input[type="time"] {
+        margin-top: 10px;
+        display: block;
+      }
+      
+      #hasil {
+        margin-top: 10px;
+      }
+
+      /*All files*/
+      .W-1{
+        display: flex;
+        padding: 0 35px;
+        align-items: center;
+        justify-content: center;
+        min-height: 40vh;
+      }
+      .wrapper{
+        max-width: 1100px;
+        width: 100%;
+        position: relative;
+      }
+
+      .wrapper i{
+        top: 50%;
+        height: 50px;
+        width: 50px;
+        cursor: pointer;
+        font-size: 1.25rem;
+        position: absolute;
+        text-align: center;
+        line-height: 50px;
+        background-color: #fff;
+        border-radius: 50%;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.23);
+        transform: translateY(-50%);
+        transition: transform 0.1s linear;
+      }
+      .wrapper i:active{
+        transform: translateY(-50%) scale(0.45);
+      }
+      .wrapper i:last-child{
+        left: 1051px;
+      }
+      .wrapper i:last-child{
+        right: -22px;
+      }
+      .wrapper .carousel{
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: calc((100% / 3) - 12px);
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 16px;
+        border-radius: 8px;
+        scroll-behavior: smooth;
+        -webkit-scrollbar: none;
+        /* overflow:hidden;*/
+      }
+      .carousel::-webkit-scrollbar {
+        display: none;
+      }
+      .carousel.no-transition {
+        scroll-behavior: auto;
+      }
+      .carousel.dragging {
+        scroll-snap-type: none;
+        scroll-behavior: auto;
+      }
+      .carousel.dragging .card {
+        cursor: grab;
+        webkit-user-select: none;
+      }
+      .carousel :where(.card, .img, ){
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .carousel .card{
+        scroll-snap-align: start;
+        height: 342px;
+        list-style: none;
+        background: #fff;
+        cursor: pointer;
+        padding-bottom: 15px;
+        flex-direction: column;
+        border-radius: 8px;
+      }
+
+      .card .img{
+        background: #1c49c5;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+      }
+
+      .card .img img{
+        width: 140px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 4px solid #2363db;
+      }
+
+      .card h2{
+        font-weight: 500;
+        margin: 30px 0 5px;
+        font-size: 1.56rem;
+      }
+
+      .card span{
+        color: #333;
+        font-size: 1.31rem;
+
+      }
+
+      .carousel .card h2 {
+        font-weight: 500;
+        font-size: 1.56rem;
+        margin: 30px 0 5px;
+      }
+      .carousel .card span {
+        color: #6A6D78;
+        font-size: 1.31rem;
+      }
+
+      @media screen and (max-width: 900px) {
+        .wrapper .carousel {
+          grid-auto-columns: calc((100% / 2) - 9px);
+        }
+      }
+      @media screen and (max-width: 600px) {
+        .wrapper .carousel {
+          grid-auto-columns: 100%;
+        }
+      }
+        /* Footer */
+        footer {
+            text-align: center;
+            clear: both;
+            webkit-background-size: cover;
+        }
+        .f-container{
+          width: 100%;
+          border-color: aliceblue;
+          justify-content: baseline;
+          flex-direction: column;
+        }
+        .g-t{
+          color: white;
+          margin-bottom: 10px;
+          display: inline-block;
+          margin-right: 2em;
+        }
+</style>
+</head>
+<body>
+    <header>
+        <h1>Putri Note's</h1>
+    </header>
+    <nav>
+      <ul>
+        <li class="Left">
+            <button><a href="#" class="active-tab">Create</a></button>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="edit.html">Edit</a></li>
+                <li><a href="Shared.html">Share</a></li>
+            </ul>
+        </li>
+        <li class="right">
+          <div class="search-box">
+            <input type="text" placeholder="Search" id="find">
+          <div class="search-icon">
+            <i class="fas fa-search"></i>
+          </div>
+          </div>
+          <div class="cancel-icon">
+                  <i class="fas fa-times"></i>
+          </div>
+        </li>
+      <script>
+        /*Transisi Searchbar*/
+        const searchBox = document.querySelector(".search-box");
+        const searchBtn = document.querySelector(".search-icon");
+        const cancelBtn = document.querySelector(".cancel-icon");
+        const searchInput = document.querySelector("input");
+        const searchData = document.querySelector(".search-data");
+      searchBtn.onclick =()=>{
+        searchBox.classList.add("active");
+        searchBtn.classList.add("active");
+        searchInput.classList.add("active");
+        cancelBtn.classList.add("active");
+        searchInput.focus();
+        if(searchInput.value != ""){
+          var values = searchInput.value;
+          searchData.classList.remove("active");
+          searchData.innerHTML = "You just typed " + "<span style='font-weight: 500;'>" + values + "</span>";
+        }else{
+          searchData.textContent = "";
+        }
+      }
+      cancelBtn.onclick =()=>{
+        searchBox.classList.remove("active");
+        searchBtn.classList.remove("active");
+        searchInput.classList.remove("active");
+        cancelBtn.classList.remove("active");
+        searchData.classList.toggle("active");
+        searchInput.value = "";
+      }
+
+      /*Filter search*/
+      function searchbox(){
+        let filter = document.getElementById('find').value.topUpperCase();
+
+        let item = document.querySelectorAll('.card');
+        let l = document.getElementsByTagName('h2');
+
+        for(var i = 0;i<=l.length;i++){
+          let a=item[i].getElementsByTagName('h2')[0];
+
+          let value=a.innerHTML || a.innerText || a.textContent;
+          if(value.topUpperCase().indexOf(filter) > -1){
+            item[i].style.display="";
+          }
+          else {
+            item[i].style.display="none";
+          }
+        }
+      }
+      </script>
+    </nav>
+    <div class="container">
+    <section>
+      <form class="book-form">
+          <label for="title">Title:</label>
+          <input type="text" id="title" name="title" required>
+
+          <label for="description">Describe:</label>
+          <textarea id="description" name="description" rows="4" required></textarea>
+            
+          <input type="checkbox" id="aktifkan" onchange="togglePengingat()" />
+          <label for="aktifkan">Pengingat Waktu</label>
+          <div id="setelan" style="display: none;">
+            <input type="date" id="tanggal" />
+            <input type="time" id="waktu" />
+          </div>
+          
+          <button onclick="setPengingat()">Setting</button>
+
+          <input type="submit" value="Save">
+<script>
+  function togglePengingat() {
+    var setelan = document.getElementById("setelan");
+    setelan.style.display = document.getElementById("aktifkan").checked ? "block" : "none";
+  }
+  
+  function setPengingat() {
+    var tanggalInput = document.getElementById("tanggal").value;
+    var waktuInput = document.getElementById("waktu").value;
+  
+    // Menggabungkan tanggal dan waktu
+    var datetimeInput = new Date(tanggalInput + " " + waktuInput);
+  }
+  
+</script>
+      </form>
+
+    </section>
+      <h3>All Files</h3><br><br>
+      <section class="W-1">
+      <div class="wrapper">
+        <i class="fa-solid fa-angle-left"></i>
+        <ul class="carousel">
+            <li class="card">
+                <div class="img"><img src="icon1.png" alt=""></div>
+                <h2>Bunga di Tepi Jalan</h2>
+                <span>Pendekatan kreatif dan memahami minat siswa dapat meningkatkan motivasi belajar mereka.</span>
+            </li>
+            <li class="card">
+                <div class="img"><img src="icon2.jfif" alt=""></div>
+                <h2>John Wick</h2>
+                <span>Bahwa keberanian dan keteguhan hati dapat membawa pemulihan dan pengampunan dalam kehidupan yang keras dan tanpa ampun.</span>
+            </li>
+            <li class="card">
+                <div class="img"><img src="icon3.jfif" alt=""></div>
+                <h2>Melodi Pendidikan</h2>
+                <span>Seni musik dapat menjadi sarana yang kuat untuk mengubah pandangan dan membuka peluang baru dalam pendidikan.</span>
+            </li>
+            <li class="card">
+                <div class="img"><img src="icon1.png" alt=""></div>
+                <h2>Lentera Pendidikan</h2>
+                <span>Pentingnya kreativitas dan ketekunan dalam menghadapi tantangan dalam pendidikan, serta mengoptimalkan sumber daya yang ada untuk mencapai hasil yang maksimal.</span>
+            </li>
+            <li class="card">
+                <div class="img"><img src="icon3.jfif" alt=""></div>
+                <h2>Tips and Trick Cooking</h2>
+                <span>Persiapkan semua bahan sebelum memulai memasak.
+                  Perhatikan pengaturan suhu 
+                  Gunakan pisau yang tajam 
+                  Cicipi makanan saat memasak dan perbaiki rasa jika diperlukan.
+                  Gunakan bumbu segar untuk memberikan cita rasa yang lebih baik.
+                  Coba berbagai resep baru untuk mengembangkan keterampilan memasak Anda.</span>
+            </li>
+        </ul>
+        <i class="fa-solid fa-angle-right"></i>
+      </div>
+
+      <script>
+        /*Slide card*/
+        const wrapper = document.querySelector(".wrapper");
+        const carousel = document.querySelector(".carousel");
+        const firstCardWidth = carousel.querySelector(".card").offsetWidth;
+        const arrowBtns = document.querySelectorAll(".wrapper i");
+        const carouselChildrens = [...carousel.children];
+      
+      let isDragging = false, isAutoPlay = true, startX, startScrollLeft, timeoutId;
+      
+      // Get the number of cards that can fit in the carousel at once
+      let cardPerView = Math.round(carousel.offsetWidth / firstCardWidth);
+      
+      // Insert copies of the last few cards to beginning of carousel for infinite scrolling
+      carouselChildrens.slice(-cardPerView).reverse().forEach(card => {
+          carousel.insertAdjacentHTML("afterbegin", card.outerHTML);
+      });
+      
+      // Insert copies of the first few cards to end of carousel for infinite scrolling
+      carouselChildrens.slice(0, cardPerView).forEach(card => {
+          carousel.insertAdjacentHTML("beforeend", card.outerHTML);
+      });
+      
+      // Scroll the carousel at appropriate postition to hide first few duplicate cards on Firefox
+      carousel.classList.add("no-transition");
+      carousel.scrollLeft = carousel.offsetWidth;
+      carousel.classList.remove("no-transition");
+      
+      // Add event listeners for the arrow buttons to scroll the carousel left and right
+      arrowBtns.forEach(btn => {
+          btn.addEventListener("click", () => {
+              carousel.scrollLeft += btn.id == "left" ? -firstCardWidth : firstCardWidth;
+          });
+      });
+      
+      const dragStart = (e) => {
+          isDragging = true;
+          carousel.classList.add("dragging");
+          // Records the initial cursor and scroll position of the carousel
+          startX = e.pageX;
+          startScrollLeft = carousel.scrollLeft;
+      }
+      
+      const dragging = (e) => {
+          if(!isDragging) return; // if isDragging is false return from here
+          // Updates the scroll position of the carousel based on the cursor movement
+          carousel.scrollLeft = startScrollLeft - (e.pageX - startX);
+      }
+      
+      const dragStop = () => {
+          isDragging = false;
+          carousel.classList.remove("dragging");
+      }
+      
+      const infiniteScroll = () => {
+          // If the carousel is at the beginning, scroll to the end
+          if(carousel.scrollLeft === 0) {
+              carousel.classList.add("no-transition");
+              carousel.scrollLeft = carousel.scrollWidth - (2 * carousel.offsetWidth);
+              carousel.classList.remove("no-transition");
+          }
+          // If the carousel is at the end, scroll to the beginning
+          else if(Math.ceil(carousel.scrollLeft) === carousel.scrollWidth - carousel.offsetWidth) {
+              carousel.classList.add("no-transition");
+              carousel.scrollLeft = carousel.offsetWidth;
+              carousel.classList.remove("no-transition");
+          }
+      
+          // Clear existing timeout & start autoplay if mouse is not hovering over carousel
+          clearTimeout(timeoutId);
+          if(!wrapper.matches(":hover")) autoPlay();
+      }
+      
+      const autoPlay = () => {
+          if(window.innerWidth < 800 || !isAutoPlay) return; // Return if window is smaller than 800 or isAutoPlay is false
+          // Autoplay the carousel after every 2500 ms
+          timeoutId = setTimeout(() => carousel.scrollLeft += firstCardWidth, 2500);
+      }
+      autoPlay();
+      
+      carousel.addEventListener("mousedown", dragStart);
+      carousel.addEventListener("mousemove", dragging);
+      document.addEventListener("mouseup", dragStop);
+      carousel.addEventListener("scroll", infiniteScroll);
+      wrapper.addEventListener("mouseenter", () => clearTimeout(timeoutId));
+      wrapper.addEventListener("mouseleave", autoPlay);
+
+      </script>
+
+    <footer class="f-container">
+        <div class="g-t">
+          <h2>Copyright 2023 ©</h2>
+          <a href="privacy-policy">Privacy</a><br>
+          <a href="terms-conditions">Terms of purchase</a>
+        </div>
+      </div>    
+    </footer>
+</body>
+</html>

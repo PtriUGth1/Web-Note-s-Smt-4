@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
+    <title>Home Note</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+      :root {
+        --primary: #eeeeee;
+        --secondary: #227c70;
+        --green: #82cd47;
+        --secondary-light: rgb(34, 124, 112, 0.2);
+        --secondary-light-2: rgb(127, 183, 126, 0.1);
+        --white: #fff;
+        --black: #393e46;
+
+        --shadow: 0px 2px 8px 0px var(--secondary-light);
+      }
+
+    * {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+    body {
+      height: 100vh;
+      width: 100%;
+      background-image: url('BC1.jfif');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #4070f4;
+    }
+
+    h1{
+      color: #fff;
+      padding-top: 10px;
+    }
+
+  /*header profile*/
+
+    .profile-dropdown {
+      position: relative;
+      width: fit-content;
+    }
+
+    .profile-dropdown-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-right: 1rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      width: 150px;
+      border-radius: 50px;
+      color: var(--black);
+
+      /* background-color: white;
+      box-shadow: var(--shadow); */
+
+      cursor: pointer;
+      border: 1px solid var(--secondary);
+      transition: box-shadow 0.2s ease-in, background-color 0.2s ease-in,border 0.3s;
+    }
+
+    .profile-dropdown-btn:hover {
+      background-color: var(--secondary-light-2);
+      box-shadow: var(--shadow);
+    }
+
+    .profile-img {
+      position: relative;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      background: url('profile-pic.jpg');
+      background-size: cover;
+    }
+
+    .profile-img i {
+      position: absolute;
+      right: 0;
+      bottom: 0.3rem;
+      font-size: 0.5rem;
+      color: var(--green);
+    }
+
+    .profile-dropdown-btn span {
+      margin: 0 0.5rem;
+      margin-right: 0;
+    }
+
+    .profile-dropdown-list {
+      position: absolute;
+      top: 68px;
+      width: 220px;
+      right: 0;
+      background-color: var(--white);
+      border-radius: 10px;
+      max-height: 0;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: max-height 0.5s;
+    }
+
+    .profile-dropdown-list hr {
+      border: 0.5px solid var(--green);
+    }
+
+    .profile-dropdown-list.active {
+      max-height: 500px;
+    }
+
+    .profile-dropdown-list-item {
+      padding: 0.5rem 0rem 0.5rem 1rem;
+      transition: background-color 0.2s ease-in, padding-left 0.2s;
+    }
+
+    .profile-dropdown-list-item a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--black);
+    }
+
+    .profile-dropdown-list-item a i {
+      margin-right: 0.8rem;
+      font-size: 1.1rem;
+      width: 2.3rem;
+      height: 2.3rem;
+      background-color: var(--secondary);
+      color: var(--white);
+      line-height: 2.3rem;
+      text-align: center;
+      margin-right: 1rem;
+      border-radius: 50%;
+      transition: margin-right 0.3s;
+    }
+
+    .profile-dropdown-list-item:hover {
+      padding-left: 1.5rem;
+      background-color: var(--secondary-light);
+    }
+
+    /*Kontainer Navigasi*/
+      main{
+        width: 100%;
+        padding-top: 20px;
+      }
+      .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      height: 40vh;
+      padding-top: 14px;
+      }
+
+      .box {
+      width: 150px;
+      height: 100px;
+      margin: 10px;
+      background-color: rgb(255, 255, 255);
+      box-shadow: 0 2px 24px rgba(255, 255, 255, 0.4);
+      border-radius: 14px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.3s ease-in-out;
+      }
+
+      .box:hover {
+      transform: scale(1.1);
+      }
+
+      /*Slide Card*/
+      .section{
+        height: 4vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #e3f2fd;
+      }
+      ::-webkit-scrollbar {
+        height: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 8px;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #1544dd6b;
+        border-radius: 10px;
+        
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #5d82e74f;
+      }
+      .container-1 {
+        display: flex;
+        gap: 12px;
+        width: 100%;
+        border-radius: 9px;
+        padding: 8px;
+        scroll-snap-type: x mandatory;
+        overflow-x: scroll;
+        scroll-padding: 5px;
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+      }
+      .container-1 .card {
+        display: flex;
+        flex: 0 0 30%;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        border-radius: 12px;
+        background: #fff;
+        scroll-snap-align: start;
+        box-shadow: 0 10px 16px rgba(0, 0, 0, 0.1);
+      }
+      .card .image {
+        height: 110px;
+        width: 110px;
+        padding: 10px;
+        background: #4070f4;
+        border-radius: 50%;
+      }
+      .image img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 5px solid #fff;
+      }
+      .card h2 {
+        margin-top: 25px;
+        color: #333;
+        font-size: 14px;
+        font-weight: 600;
+      }
+      .card p {
+        margin-top: 4px;
+        font-size: 13px;
+        font-weight: 400;
+        color: #333;
+        text-align: center;
+      }
+
+      /*Konten*/
+      /* jumbotron */
+      .jumbotron{
+        background-image: url(img/jumbotron.jpg);
+        background-size: cover;
+        height: 410px;
+        position: relative;
+      }
+
+      .jumbotron .container{
+        z-index: 1;
+        position: relative;
+      }
+
+      .jumbotron::after{
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0));
+        position: absolute;
+        bottom: 0;
+      }
+
+      .jumbotron .display-4{
+        color:white;
+        text-align: center;
+        margin-top: 100px;
+        font-weight: 500;
+        text-shadow: 1px 1px rgb(0, 0, 0, 0.7);
+        font-size: 20px;
+      }
+
+      
+      .info-panel{
+        box-shadow: 0 3px 20px rgba(0, 0, 0, 0.5);
+        border-radius: 12px;
+        margin-top: -100px;
+        background-color: white;
+        padding: 30px;
+    }
+
+      ::after, ::before {
+        box-sizing: border-box;
+      }
+
+      .col-8 {
+        display: flex;
+        max-width: 66%;
+        position: relative;
+        width: 100%;
+      }
+    .info-panel img{
+        width: 140px;
+        height: 140px;
+        margin-right: auto;
+        margin-bottom: auto;
+        max-width: 100%;
+    }
+    
+    .info-panel h4{
+        font-size: 16px;
+        text-transform: uppercase;
+        font-weight: bold;
+        margin-top: 5px;
+    }
+    .info-panel p{
+        font-size: 14px;
+        margin-top: -5px;
+        text-align: justify;
+    }
+    
+</style>
+  </head>
+  <body>
+    <header>
+      <div class="profile-dropdown">
+        <div onclick="toggle()" class="profile-dropdown-btn">
+          <div class="profile-img">
+            <i class="fa-solid fa-circle"></i>
+          </div>
+          <span>
+            20210803001 Aliph Putri
+            <i class="fa-solid fa-angle-down"></i>
+          </span>
+        </div>
+
+        <ul class="profile-dropdown-list">
+          <li class="profile-dropdown-list-item">
+            <a href="#">
+              <i class="fa-regular fa-user"></i>
+              Edit Profile
+            </a>
+          </li>
+
+          <li class="profile-dropdown-list-item">
+            <a href="#">
+              <i class="fa-regular fa-circle-question"></i>
+              Help & Support
+            </a>
+          </li>
+          <hr/>
+
+          <li class="profile-dropdown-list-item">
+            <a href="TA.html">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i>
+              Log out
+            </a>
+          </li>
+        </ul>
+      </div>
+    </header>
+    <script>
+    let profileDropdownList = document.querySelector(".profile-dropdown-list");
+    let btn = document.querySelector(".profile-dropdown-btn");
+
+    let classList = profileDropdownList.classList;
+
+    const toggle = () => classList.toggle("active");
+
+    window.addEventListener("click", function (e) {
+      if (!btn.contains(e.target)) classList.remove("active");
+    });
+
+    function navigateToNextPage(url) {
+      window.location.href = url;
+  }
+    </script>
+      <h1 align="center">Notes Online🌟</h1>
+      <div class="container">
+        <div class="box" onclick="navigateToNextPage('create.html')">
+          <i class="fas fa-pencil-alt"></i>
+          <span>Create</span>
+        </div>
+        <div class="box" onclick="navigateToNextPage('shared.html')">
+          <i class="fas fa-share-alt"></i>        
+          <span>Shared</span>
+        </div>
+        <div class="box" onclick="navigateToNextPage('Schedule.html')">
+          <i class="fas fa-calendar-alt"></i>
+          <span>Schedule</span>      
+        </div>
+    <section class="container-1">
+      <div class="card">
+        <div class="image">
+          <img src="icon2.jfif" alt="" />
+        </div>
+        <h2>1</h2>
+        <p>Jangan biarkan ide Anda terlewatkan! Gunakan aplikasi pencatatan terbaik untuk menangkap dan memprioritaskan ide, proyek, dan daftar yang harus dilakukan.</p>
+      </div>
+      <div class="card">
+        <div class="image">
+         <img src="B1.jpg" alt="" />
+        </div>
+        <h2>2</h2>
+        <p>Dapatkan pengalaman pencatatan yang lebih baik dengan Putri Note's Buat catatan dan pengingat dengan mudah di browser apa pun.</p>
+      </div>
+      <div class="card">
+        <div class="image">
+          <img src="icon3.jfif" alt="" />
+        </div>
+        <h2>3</h2>
+        <p>Temukan catatan dengan cepat saat Anda mencari.</p>
+      </div>
+      <div class="card">
+        <div class="image">
+          <img src="icon1.png" alt="" />
+        </div>
+        <h2>4</h2>
+        <p>Bagikan catatan Anda dengan mudah menggunakan Putri Note's untuk web! Buka buku catatan Anda, klik Bagikan, dan berikan akses kepada orang lain.</p>
+      </div>
+    </section>
+
+    <div class="konten">
+      <!-- jumbotron -->
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis qui eum consequuntur maiores! Hic praesentium quis reiciendis laborum quam molestiae alias fuga ea sint, aliquid, repellendus dolorum recusandae quas non!</h1>
+      </div>
+    </div>
+  <!-- akhir jumbotron -->
+
+      <div class="row justify-content-center">
+        <div class="col-8 info-panel">
+          <div class="col-lg">
+            <img src="about.jpg" alt="about us" class="float-center">
+            <h4>Tentang Kami</h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum aspernatur maxime enim veritatis sequi. Maiores eos vitae sequi quam, optio dolorum. Atque dolorem enim consequuntur provident repudiandae voluptate quibusdam dolorum?</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Note</title>
+  <script type="text/javascript" src="https://kit.fontawesome.com/e25b852c87.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
+    <style>
+        body{
+            background-image:url(BC1.jfif);
+            background-size: cover;
+        }
+        .wrap {
+            padding-top: 95px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .box {
+            width: 310px;
+            margin: 23px;
+            cursor: pointer;
+            padding: 22px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border: 1px solid black;
+        }
+        .box:hover{
+            -ms-transform: scale(1.2);
+            -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+        }
+        .box-title {
+            font-weight: bold;
+        }
+        .box-description {
+            margin-top: 10px;
+        }
+
+        .wrap .box .box:hover{
+            -ms-transform: scale(1.2);
+            -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+        .left-column {
+            display: flex;
+            align-items: center;
+            width: 50%;
+            margin-top: 70px;
+            padding: 10px;
+        }
+        .container{
+            width: 70px;
+            height: 70px;
+            position: relative;
+        }
+        
+        #share-toggle {
+            display: none;
+        }
+        
+        span, a {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+        }
+        
+        span{
+            width: 100px;
+            height: 100px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #eee;
+            color: #333;
+            font-size: 25px;
+            z-index: 1;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+        }
+        
+        .social-media-list {
+            width: 60px;
+            height: 60px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .social-media-list a{
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.3s;
+            font-size: 25px;
+        }
+        
+        #share-toggle:checked ~ .social-media-list a:nth-child(1) {
+            background-color: #3B5998;
+            transition-delay: 0;
+            transform: translateY(-100px);
+        }
+        
+        #share-toggle:checked ~ .social-media-list a:nth-child(2) {
+            background-color: #25D366;
+            transition-delay: 0.1s;
+            transform: translate(70px,-70px);
+        }
+        
+        #share-toggle:checked ~ .social-media-list a:nth-child(3) {
+            background-color: #FFFC00;
+            transition-delay: 0.2s;
+            transform: translateX(100px);
+        }
+        
+        #share-toggle:checked ~ .social-media-list a:nth-child(4) {
+            background-color: #FF0000;
+            transition-delay: 0.3s;
+            transform: translate(70px, 70px);
+        }
+        
+        #share-toggle:checked ~ .social-media-list a:nth-child(5) {
+            background-color: #FF4500;
+            transition-delay: 0.4s;
+            transform: translateY(100px);
+        }
+        
+        #share-toggle:checked ~ .social-media-list a:nth-child(6) {
+            background-color: #00ACEE;
+            transition-delay: 0.5s;
+            transform: translate(-70px, 70px);
+        }
+        
+        #share-toggle:checked ~ .social-media-list a:nth-child(7) {
+            background-color: #EA4C89;
+            transition-delay: 0.6s;
+            transform: translateX(-100px);
+        }
+        #share-toggle:checked ~ .social-media-list a:nth-child(8) {
+            background-color: #0E76A8;
+            transition-delay: 0.7s;
+            transform: translate(-70px, -70px);
+        }
+    </style>
+</head>
+<body>
+    <div class="left-column">
+        <div class="container">
+            <input type="checkbox" name="share-toggle" id="share-toggle">
+            <label for="share-toggle">
+                <span><i class="fas fa-share-alt"></i></span>
+            </label>
+            <div class="social-media-list">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://wa.me/+628990063053"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://youtube.com/@putriutami8297"><i class="fab fa-youtube"></i></a>
+                <a href="mailto:aliphutami22@gmail.com"><i class="fa-thin fa-envelope-open-text"></i></a>
+                <a href="https://www.linkedin.com/in/putri-utami-899805269/"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div> 
+    </div>
+    
+    <div class="wrap">
+        <div class="box">
+            <h3 class="box-title">Judul Box 1</h3>
+            <p class="box-description">Deskripsi Box 1</p>
+        </div>
+        <div class="box">
+            <h3 class="box-title">Judul Box 2</h3>
+            <p class="box-description">Deskripsi Box 2</p>
+        </div>
+        <div class="box">
+            <h3 class="box-title">Judul Box 3</h3>
+            <p class="box-description">Deskripsi Box 3</p>
+        </div>
+        <div class="box">
+            <h3 class="box-title">Judul Box 4</h3>
+            <p class="box-description">Deskripsi Box 4</p>
+        </div>
+        <div class="box">
+            <h3 class="box-title">Judul Box 5</h3>
+            <p class="box-description">Deskripsi Box 5</p>
+        </div>
+        <div class="box">
+            <h3 class="box-title">Judul Box 6</h3>
+            <p class="box-description">Deskripsi Box 6</p>
+        </div>
+    </div>
+</body>
+</html>
